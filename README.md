@@ -1,4 +1,4 @@
-# FC Cub - Website
+# FC Club - Website
 
 #   [DEMO](https://fcb-web.netlify.app/)
 
