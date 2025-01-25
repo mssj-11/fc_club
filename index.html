@@ -40,8 +40,10 @@
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#equipo">El Equipo</a></li>
                 <li><a href="#partidos">Partidos</a></li>
-                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#productosTarjetas">Productos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#carrito" class="cart-button"><i class="fa-solid fa-cart-plus"></i> Carrito</a></li>
+                <li><a href="admin.html" class="user-button"><i class="fa-solid fa-user-tie"></i>Login</a></li>
             </ul>
         </nav>
     </header>
@@ -138,12 +140,35 @@
 
          <!-- Partidos -->
           <article id="partidos">
-            <h2>Partidos próximos</h2>
+            <h2>Proximos partidos</h2><!--
             <ul>
                 <li>Partido 1: 14:00 - FC Barcelona vs. Atlelico M.</li>
                 <li>Partido 2: 16:00 - FC Barcelona vs. Real Madrid</li>
                 <li>Partido 3: 18:00 - FC Barcelona vs. Manchester United</li>
-            </ul>
+            </ul>-->
+
+            <div class="liga-container">
+              <!-- Select para cambiar el valor de leagueId -->
+              <label for="leagueSelect">Selecciona una liga:</label>
+              <select id="leagueSelect">
+                  <option value="0" disabled selected>Elige una opción...</option>
+                  <option value="302">La Liga</option>
+                  <option value="300">Copa del Rey</option>
+                  <option value="3">UEFA Champions</option><!--
+                  <option value="383">Super Cup</option>-->
+              </select>
+            </div>
+            <div class="container" id="matches-container"></div>
+      
+            <!-- Slider de próximos partidos -->
+            <h2>Sigue al Barça en sus siguientes partidos</h2>
+            <div class="slider-container-partidos" id="slider-container">
+                <div class="slider-partidos">
+                    <!-- Aquí se agregarán los partidos dinámicamente -->
+                </div>
+                <button class="slider-prev" id="slider-prev"><i class="fa-solid fa-angle-left"></i></button>
+                <button class="slider-next" id="slider-next"><i class="fa-solid fa-angle-right"></i></button>
+            </div>
          </article>
          <!-- Galeria -->
           <article id="galeria">
@@ -157,6 +182,50 @@
                 <img src="./img/6.jpg" title="Copas Club Barcelona" alt="fc barcelona">
             </div>
           </article>
+          <!-- PRODUCTOS -->
+          <section id="productosTarjetas">
+            <h2>Productos Disponibles</h2>
+            <div id="tarjetasContainer" class="tarjetas-container">
+                <!-- Aquí se generarán las tarjetas de los productos -->
+            </div>
+          </section><br/>
+          <!-- SECTION SHOPPING -->
+          <section id="carrito" class="carrito-modal">
+            <!-- Modal de Confirmación con Formulario -->
+            <div id="modalConfirmacion" class="modal">
+              <div class="modal-contenido">
+                <span id="cerrarModal" class="modal-cerrar"><i class="fa-solid fa-xmark"></i></span>
+                <h2>Ingresa tus datos</h2>
+                
+                <!-- Formulario de envío de datos -->
+                <form id="formularioCompra">
+                  <label for="nombreCliente">Nombre completo:</label>
+                  <input type="text" id="nombreCliente" name="nombreCliente" required>
+
+                  <label for="telefonoCliente">Número telefónico:</label>
+                  <input type="text" id="telefonoCliente" name="telefonoCliente" required>
+
+                  <label for="correoCliente">Correo electrónico:</label>
+                  <input type="email" id="correoCliente" name="correoCliente" required>
+
+                  <div class="modal-botones">
+                    <button type="button" id="cancelarCompra">Cancelar</button>
+                    <button class="confirmar" type="submit" id="confirmarCompra">Confirmar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="modal-content">
+              <span class="close"><i class="fa-solid fa-xmark"></i></span>
+              <!-- CARD SHOPPING -->
+              <h2>Carrito de Compras</h2>
+              <div id="carritoContainer">
+
+              </div>
+            </div>
+            
+          </section>
           <!-- Patrocinadores -->
           <section class="sponsors-section">
             <h2>Principales patrocinadores del Club</h2>
@@ -177,7 +246,7 @@
             </ul>
 
             <h2>Formulario de contacto</h2>
-            <form id="contactForm" novalidate action="mailto:info@barcelonafc.com" method="POST" enctype="text/plain">
+            <form id="contactForm" novalidate method="POST" enctype="text/plain"> <!-- action="mailto:info@barcelonafc.com" -->
                 <fieldset>
                     <legend>Datos de Contacto</legend>
                     <label for="name">Nombre:</label>
@@ -361,8 +430,16 @@
             </ul>
           </div>
         </div>
-      </footer>
+    </footer>
 
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  emailjs.init('3p7MKtXhKdZP5kEAK')
+</script>
+    <script type="text/javascript" src="./js/contactSend.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/products.js"></script>
     <script src="./js/form.js"></script>
     <script src="./js/script.js"></script>
 </body>

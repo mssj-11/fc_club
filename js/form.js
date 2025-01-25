@@ -44,12 +44,15 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     if (isValid) {
         alert("El formulario ha sido enviado correctamente");
 
-        /* Opcional: Limpiar el formulario
-        document.getElementById("contactForm").reset();*/
+        /* Opcional: Limpiar el formulario */
+        document.getElementById("contactForm").reset();
         // Consola
         console.log("Form submitted successfully");
-        // Enviar el formulario (es necesario para que la acción de mailto funcione)
-        document.getElementById("contactForm").submit();  // Ahora envía el formulario
+        /* Enviar el formulario (es necesario para que la acción de mailto funcione)
+        document.getElementById("contactForm").submit();  // Ahora envía el formulario */
+
+        // Llamamos a la función de enviarFormularioContacto() desde contactSend.js
+        enviarFormularioContacto(name, email, options, message);
     }
 
 });
