@@ -135,6 +135,16 @@ header nav .cart-button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(45, 7, 214, 0.5);
 }
+header nav .numero-carrito {
+  display: none;
+  background-color: #181733;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  width: 22px;
+  height: 22px;
+}
 header nav ul {
   display: flex;
   justify-content: flex-end;
@@ -892,12 +902,14 @@ main #carrito .modal-botones button {
   font-size: 16px;
   cursor: pointer;
   border-radius: 6px;
-  border: none; /*
-background-color: #4CAF50;*/
+  border: none;
+  /*
+  background-color: #4CAF50;*/
   color: white;
 }
-main #carrito .modal-botones button:hover { /*
-background-color: #45a049;*/
+main #carrito .modal-botones button:hover {
+  /*
+  background-color: #45a049;*/
   background-color: #000;
 }
 main #carrito form input {
@@ -949,6 +961,22 @@ main #carritoContainer #continuarCompra .fa-chevron-right {
 }
 main #carritoContainer #continuarCompra:hover {
   background-color: #1976d2;
+}
+main #carritoContainer #vaciarCarrito {
+  background-color: #A50021;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+}
+main #carritoContainer #vaciarCarrito .fa-trash-can {
+  margin-right: 10px;
+}
+main #carritoContainer #vaciarCarrito:hover {
+  background-color: #f44336;
 }
 main #carritoContainer th,
 main #carritoContainer td {

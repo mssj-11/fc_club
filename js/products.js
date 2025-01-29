@@ -76,6 +76,8 @@ function agregarACarrito(id) {
     }
     guardarCarrito(); // Guardar el carrito en LocalStorage
     mostrarCarrito();
+    // Actualizar el número en el botón del carrito
+    actualizarNumeroCarrito();
   }
 }
 
@@ -143,7 +145,7 @@ function mostrarCarrito() {
     total += precioFinal * producto.cantidadCarrito; // Calcula el costo total del producto
   });
 
-  // Crear un contenedor para el scroll horizontal de la tabla
+  // Crea un contenedor para realizar el scroll horizontal de la tabla
   const tablaContainer = document.createElement("div");
   tablaContainer.classList.add("tabla-scroll-container");
   tablaContainer.appendChild(tablaCarrito);
@@ -153,16 +155,20 @@ function mostrarCarrito() {
 
   carritoContenedor.innerHTML += `
         <p id="totalDescuento">Descuento Total:
-          <strong> $${descuentoTotal.toLocaleString("es-MX")}</strong>
+          <strong> $${descuentoTotal.toFixed(2).toLocaleString("es-MX")}</strong>
         </p>
         <p id="totalCarrito">Total:
-          <strong> $${total.toLocaleString("es-MX")}</strong>
-        </p><!--
-        <button id="vaciarCarrito" onclick="vaciarCarrito()">Vaciar Carrito</button>-->
+          <strong> $${total.toFixed(2).toLocaleString("es-MX")}</strong>
+        </p>
+        <button id="vaciarCarrito" onclick="vaciarCarrito()">
+          <i class="fa-solid fa-trash-can"></i> Vaciar Carrito
+        </button> <!-- Botón para vaciar carrito -->
         <button id="continuarCompra" onclick="continuarCompra()">
             <i class="fa-solid fa-chevron-right"></i> Continuar con la compra
         </button>
-    `;
+  `;
+  // Actualizar el número en el botón del carrito
+  actualizarNumeroCarrito();
 }
 
 // Función para actualizar el carrito con los productos modificados o eliminados
@@ -203,6 +209,8 @@ function incrementarCantidad(index) {
     carrito[index].cantidadCarrito++;
     guardarCarrito();
     mostrarCarrito();
+    // Actualizar el número en el botón del carrito
+    actualizarNumeroCarrito();
   } else {
     alert("No puedes agregar más productos. Ya no hay suficiente cantidad.");
   }
@@ -214,6 +222,8 @@ function decrementarCantidad(index) {
     carrito[index].cantidadCarrito--;
     guardarCarrito();
     mostrarCarrito();
+    // Actualizar el número en el botón del carrito
+    actualizarNumeroCarrito();
   }
 }
 
@@ -222,12 +232,32 @@ function eliminarDelCarrito(index) {
   carrito.splice(index, 1);
   guardarCarrito();
   mostrarCarrito();
+  // Actualizar el número en el botón del carrito
+  actualizarNumeroCarrito();
 }
 
 // Vaciar el carrito
 function vaciarCarrito() {
   localStorage.removeItem("carritoBarca");
   mostrarCarrito(); // Actualizamos la vista del carrito
+  actualizarNumeroCarrito(); // Actualizamos el número en el ícono del carrito
+}
+
+
+//  Actualizar cantidad de productos BTN carrito
+function actualizarNumeroCarrito() {
+  const carrito = obtenerCarrito();
+  const numeroCarrito = document.getElementById("numeroCarrito");
+
+  // Calcular el total de productos en el carrito
+  const cantidadProductos = carrito.reduce((total, producto) => total + producto.cantidadCarrito, 0);
+
+  if (cantidadProductos > 0) {
+    numeroCarrito.textContent = cantidadProductos; // Mostrar cantidad de productos
+    numeroCarrito.style.display = "inline-block"; // Hacer visible el número
+  } else {
+    numeroCarrito.style.display = "none"; // Ocultar el número si no hay productos
+  }
 }
 
 /* --------------------------------------------

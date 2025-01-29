@@ -160,6 +160,17 @@ header {
       box-shadow: 0 0 0 3px rgba(45, 7, 214, 0.5);
     }
 
+    .numero-carrito {
+      display: none;
+      background-color: $primary-color;
+      color: $color-white;
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: bold;
+      width: 22px;
+      height: 22px;
+    }
+    
 
     ul {
       display: flex;
@@ -1066,12 +1077,14 @@ main {
       font-size: 16px;
       cursor: pointer;
       border-radius: 6px;
-      border: none;/*
+      border: none;
+      /*
       background-color: #4CAF50;*/
       color: white;
     }
 
-    .modal-botones button:hover {/*
+    .modal-botones button:hover {
+      /*
       background-color: #45a049;*/
       background-color: #000;
     }
@@ -1138,6 +1151,25 @@ main {
 
     #continuarCompra:hover {
       background-color: #1976d2;
+    }
+
+    #vaciarCarrito {
+      background-color: $secondary-color;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 10px;
+      
+      .fa-trash-can {
+        margin-right: 10px;
+      }
+    }
+    
+    #vaciarCarrito:hover {
+      background-color: #f44336;
     }
 
     th,
@@ -1270,28 +1302,28 @@ main {
   }
 
   // Estilos para pantallas pequeñas (menos de 768px)
-@media screen and (max-width: 768px) {
-  .carrito-modal {
-    .modal-content {
-      width: 90%;
-      max-width: 90%;
-      padding: 15px;
-      font-size: 16px;
-      margin-top: 80px;
+  @media screen and (max-width: 768px) {
+    .carrito-modal {
+      .modal-content {
+        width: 90%;
+        max-width: 90%;
+        padding: 15px;
+        font-size: 16px;
+        margin-top: 80px;
+      }
     }
-  }
-  
-}
 
-// Estilos para pantallas grandes (más de 1200px)
-@media screen and (min-width: 1200px) {
-  .carrito-modal {
-    .modal-content {
-      width: 70%;
-      max-width: 1000px;
+  }
+
+  // Estilos para pantallas grandes (más de 1200px)
+  @media screen and (min-width: 1200px) {
+    .carrito-modal {
+      .modal-content {
+        width: 70%;
+        max-width: 1000px;
+      }
     }
   }
-}
 
 
 
