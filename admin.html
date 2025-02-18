@@ -116,10 +116,25 @@
             <table id="tablaProductos">
             <thead>
                 <tr>
-                    <th>Producto</th>
+                    <th class="text-center">Producto
+                        <div class="th__container-btn">
+                            <button onclick="ordenarPorNombre('asc')"><i class="fa-solid fa-chevron-up"></i></button>
+                            <button onclick="ordenarPorNombre('desc')"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                    </th>
                     <th>Images</th>
-                    <th>Precio</th>
-                    <th>Descuento</th>
+                    <th class="text-center">Precio
+                        <div class="th__container-btn">
+                            <button onclick="ordenarPorPrecio('asc')"><i class="fa-solid fa-chevron-up"></i></button>
+                            <button onclick="ordenarPorPrecio('desc')"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                    </th>
+                    <th class="text-center">Descuento
+                        <div class="th__container-btn">
+                            <button onclick="ordenarPorDescuento('asc')"><i class="fa-solid fa-chevron-up"></i></button>
+                            <button onclick="ordenarPorDescuento('desc')"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                    </th>
                     <th>Categoría</th>
                     <th>Tallas</th>
                     <th>Cantidad Total</th>

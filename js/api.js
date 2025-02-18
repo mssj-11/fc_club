@@ -27,7 +27,7 @@ window.onload = function () {
 
 const teamId = 97;
 let leagueId = 302;
-const apiKey = "ebd5dab8fa842fd5e8fc5f6b3bce79f7ee915cd1102e8ecdaa92da81f15fa645";
+const apiKey = "1b146cb96b4fb6a8d5f1e9150a577e5da65a7269425e4829a5e787ae54cc08a5";
 const urlBase = `https://apiv3.apifootball.com/?action=get_events&from=${fromDate}&to=${toDate}&league_id=`;
 //const urlBase = `https://apiv3.apifootball.com/?action=get_events&from=${fromDate}&to=${toDate}&league_id=${leagueId}&team_id=${teamId}&APIkey=${apiKey}`;//${numberMatches}
 

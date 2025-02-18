@@ -247,6 +247,17 @@ td {
   font-size: 14px;
 }
 
+.text-center {
+  align-items: center;
+  text-align: center;
+}
+
+.th__container-btn {
+  display: flex;
+  margin-top: 5px;
+  justify-content: space-between;
+}
+
 .td-tallas {
   font-size: 14px;
   line-height: 1.6;

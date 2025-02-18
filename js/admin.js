@@ -1,3 +1,34 @@
+// Función para cargar el archivo JSON y guardarlo en el localStorage
+function cargarProductosDesdeJSON() {
+    // Verificar si el localStorage está vacío
+    if (!localStorage.getItem("productosBarca") || localStorage.getItem("productosBarca") === "") {
+        // Hacer una petición fetch para cargar el archivo productosBarca.json
+        fetch("../js/productosBarca.json")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error al cargar el archivo JSON");
+                }
+                return response.json();  // Parsear el JSON
+            })
+            .then(data => {
+                // Guardar los datos en el localStorage
+                localStorage.setItem("productosBarca", JSON.stringify(data));
+                console.log("Datos cargados en el localStorage.");
+            })
+            .catch(error => {
+                console.error("Error al cargar los productos:", error);
+            });
+    } else {
+        console.log("Los productos ya están en el localStorage.");
+    }
+}
+
+// Llamar a la función para verificar e insertar los datos
+cargarProductosDesdeJSON();
+
+
+
+
 /* --------------------------------------------
    MODAL
 -------------------------------------------- */
@@ -212,11 +243,17 @@ function mostrarProductosTarjetas() {
 -------------------------------------------- */
 // Ordenar productos por precio (ascendente o descendente)
 function ordenarPorPrecio(orden) {
-    const productos = obtenerProductos(); // Obtener los productos desde localStorage
-    productos.sort((a, b) => {
-        return orden === 'asc' ? a.precio - b.precio : b.precio - a.precio;
-    });
-    mostrarProductosTarjetas(); // Vuelve a mostrar los productos ordenados
+    const productos = obtenerProductos();
+
+    if (orden === 'asc') {
+        productos.sort((a, b) => b.precio - a.precio);
+    } else if (orden === 'desc') {
+        productos.sort((a, b) => a.precio - b.precio);
+    }
+
+    guardarProductos(productos);
+    mostrarProductosTabla();
+    mostrarProductosTarjetas();
 }
 
 // Ordenar productos por nombre (alfabético)
@@ -229,9 +266,26 @@ function ordenarPorNombre(orden) {
             return b.nombreProducto.localeCompare(a.nombreProducto);
         }
     });
+    guardarProductos(productos);
+    mostrarProductosTabla();
     mostrarProductosTarjetas(); // Vuelve a mostrar los productos ordenados
 }
 
+
+
+function ordenarPorDescuento(orden) {
+    const productos = obtenerProductos();
+
+    if (orden === 'asc') {
+        productos.sort((a, b) => b.descuento - a.descuento);
+    } else if (orden === 'desc') {
+        productos.sort((a, b) => a.descuento - b.descuento);
+    }
+
+    guardarProductos(productos);
+    mostrarProductosTabla();
+    mostrarProductosTarjetas();
+}
 
 
 
